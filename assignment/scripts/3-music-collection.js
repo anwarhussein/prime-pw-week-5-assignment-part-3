@@ -9,15 +9,22 @@ let collection = [];
 
 function addToCollection(title, artist, yearPublished){
   const albumObj = {
-    title: 'indha deeraley',
-    artist:'Saada Ali',
-    yearPublished: 1991
+    title: title,
+    artist:artist,
+    yearPublished: yearPublished
 }
   collection.push(albumObj);
   return albumObj;
 }
+console.log(addToCollection('Indha deeraley', 'Saada Ali', 1991));
 //Test the `addToCollection` function:
 //Add 6 albums to your collection. Aim to have a mix of both same and different artists and published years.
 //(Feel free to share your musical interests, or make stuff up. Totally fine either way.)
 //Console.log each album as added using the returned value.
 //After all are added, console.log the `collection` array.
+console.log(addToCollection('Boomba train','nameless',2003));
+console.log(addToCollection('zilizopendwa','Saadia Abdo',1988));
+console.log(addToCollection('Rabaaso', 'Abdi Diini',2009));
+console.log(addToCollection('nipekitu', 'nameless',2000));
+console.log(addToCollection('Mikasi','Ferooz', 2004));
+console.log(addToCollection('sema basi', 'Mb dogg', 2006));
