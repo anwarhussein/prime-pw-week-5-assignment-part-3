@@ -14,7 +14,8 @@ function addToCollection(title, artist, yearPublished, tracks){
   return albumObj;
 }
 
-console.log(addToCollection('Indha deeraley', 'Saada Ali', 1991, [{name: 'mzeeya', duration: 2},{name: 'kotokoto', duration: 16}]));
+console.log(addToCollection('Indha deeraley', 'Saada Ali', 1991,
+                          [{name: 'mzeeya', duration: 2},{name: 'kotokoto', duration: 16}]));
 
 //Test the `addToCollection` function:
 //Add 6 albums to your collection. Aim to have a mix of both same and different artists and published years.
@@ -22,12 +23,15 @@ console.log(addToCollection('Indha deeraley', 'Saada Ali', 1991, [{name: 'mzeeya
 //Console.log each album as added using the returned value.
 //After all are added, console.log the `collection` array.
 
-console.log(addToCollection('Boomba train','Nameless', 2003, [{name: 'kilakitu', duration: 5},{name: 'jimjim', duration: 6}]));
-console.log(addToCollection('Zilizopendwa','Saadia Abdo', 1988, [{name: 'natapika', duration: 6}]));
-console.log(addToCollection('Rabaaso', 'Abdi Diini', 2009, [{name: 'heblow', duration: 10}]));
+console.log(addToCollection('Boomba train','Nameless', 2003,
+                            [{name: 'kilakitu', duration: 5},{name: 'jimjim', duration: 6}]));
+console.log(addToCollection('Zilizopendwa','Saadia Abdo', 1988,[{name: 'natapika', duration: 6},
+                            {name: 'mayma', duration:100},{name: 'chekacheka', duration: 18}]));
+console.log(addToCollection('Rabaaso', 'Abdi Diini', 2009, [{name: 'heblow', duration: 10},
+                            {name: 'majimaji', duration: 25},{name: 'kituvitu', duration: 1}]));
 console.log(addToCollection('Nipekitu', 'Nameless', 2000, [{name: 'tosha', duration: 5}]));
 console.log(addToCollection('Mikasi','Ferooz', 2004, [{name: 'kotokoto', duration: 16}]));
-console.log(addToCollection('Sema basi', 'Saadia Abdo', 2006, [{name: 'jimjim', duration: 6}]));
+console.log(addToCollection('Sema basi', 'Saadia Abdo', 2006, [{name: 'jimjim', duration: 12}]));
 
 console.log(collection);
 
@@ -42,8 +46,11 @@ function showCollection(albums){
   console.log(`The number of items in the array is: ${albums.length}`);
   for (let album= 0; album < albums.length; album++) {
     console.log(`${albums[album].title} by ${albums[album].artist},
-      published in ${albums[album].yearPublished}`);
+      published in ${albums[album].yearPublished}:`);
       //for loop over the tracks
+      for (let track = 0; track < albums[album].tracks.length; track++) {
+          console.log(`${track + 1}. ${albums[album].tracks[track].name}: ${albums[album].tracks[track].duration}`);
+      }
   }
 }
 showCollection(collection);
@@ -78,16 +85,19 @@ console.log(findByArtist('Nameless'));
 
 function search(artist, year, trackName){
   let newAlbums = [];
-  for (let album of collection){
-    if(album.artist === artist && album.yearPublished === year && album.tracks.name === trackName){
-         newAlbums.push(album);
+  for (let album = 0; album < collection.length; album++){
+
+      for (let track = 0; track < collection[album].tracks.length; track++) {
+          if(collection[album].artist === artist && collection[album].yearPublished === year
+            && collection[album].tracks[track].name === trackName)
+            newAlbums.push(collection[album]);
       }
     }
-    return newAlbums;
-  }
 
+  return newAlbums;
+}
 
-console.log(search('Nameless', 2000,'inauma'));
+console.log(search('Nameless', 2000,'tosha'));
 console.log(search());
 console.log(search('ahfdhhh',2015));
 
