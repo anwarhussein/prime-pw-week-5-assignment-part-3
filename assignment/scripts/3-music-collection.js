@@ -7,13 +7,13 @@ console.log('***** Music Collection *****')
 // Return the newly created object
 
 let collection = [];
-
+//Add collection function definition
 function addToCollection(title, artist, yearPublished, tracks){
   const albumObj = {title, artist, yearPublished, tracks};
-  collection.push(albumObj);
-  return albumObj;
+  collection.push(albumObj);//Adds the object in the collection
+  return albumObj;//returns the object
 }
-
+//call the function to add objects in the collection: Adds 7 objects.
 console.log(addToCollection('Indha deeraley', 'Saada Ali', 1991,
                           [{name: 'mzeeya', duration: 2},{name: 'kotokoto', duration: 16}]));
 
@@ -31,9 +31,10 @@ console.log(addToCollection('Rabaaso', 'Abdi Diini', 2009, [{name: 'heblow', dur
                             {name: 'majimaji', duration: 25},{name: 'kituvitu', duration: 1}]));
 console.log(addToCollection('Nipekitu', 'Nameless', 2000, [{name: 'tosha', duration: 5}]));
 console.log(addToCollection('Mikasi','Ferooz', 2004, [{name: 'kotokoto', duration: 16}]));
-console.log(addToCollection('Sema basi', 'Saadia Abdo', 2006, [{name: 'jimjim', duration: 12}]));
+console.log(addToCollection('Sema basi', 'Saadia Abdo', 2006, [{name: 'jimjim', duration: 12},
+                            {name: 'sahau', duration: 7}]));
 
-console.log(collection);
+console.log(collection);// Check what is in the collection
 
 // Add a function named showCollection. This function should:
 // Take in an array parameter. (This allows it to be reused to show any collection,
@@ -44,13 +45,13 @@ console.log(collection);
 //Test the showCollection function.
 function showCollection(albums){
   console.log(`The number of items in the array is: ${albums.length}`);
-  for (let album= 0; album < albums.length; album++) {
+  for (let album= 0; album < albums.length; album++) {//Loop through the all the albums
     console.log(`${albums[album].title} by ${albums[album].artist},
-      published in ${albums[album].yearPublished}:`);
+      published in ${albums[album].yearPublished}:`);//Logs all the albums by title, artist and yearPublished
       //for loop over the tracks
       for (let track = 0; track < albums[album].tracks.length; track++) {
           console.log(`${track + 1}. ${albums[album].tracks[track].name}: ${albums[album].tracks[track].duration}`);
-      }
+      }//logs all the tracks
   }
 }
 showCollection(collection);
@@ -62,13 +63,13 @@ showCollection(collection);
 // Return the array with the matching results. If no results are found, return an empty array.
 
 function findByArtist(artist){
-  let results = [];
-  for (let album of collection) {
-    if(album.artist === artist){
-      results.push(album)
+  let results = [];// an array to store all the matches
+  for (let album of collection) {//loop through the collection
+    if(album.artist === artist){//find the match
+      results.push(album)//Add in the results array
     }
 }
-  return results;
+  return results;//return it.
 }
 console.log(findByArtist('Nameless'));
 
@@ -84,22 +85,24 @@ console.log(findByArtist('Nameless'));
 //then return all albums in the collection.
 
 function search(artist, year, trackName){
-  let newAlbums = [];
-  for (let album = 0; album < collection.length; album++){
+  let newAlbums = [];// Stores all the matches
+  for (let album = 0; album < collection.length; album++){//Loop through the collection
 
-      for (let track = 0; track < collection[album].tracks.length; track++) {
+      for (let track = 0; track < collection[album].tracks.length; track++) {//Loop through the tracks
           if(collection[album].artist === artist && collection[album].yearPublished === year
-            && collection[album].tracks[track].name === trackName)
-            newAlbums.push(collection[album]);
+            && collection[album].tracks[track].name === trackName){//if we find a match
+              newAlbums.push(collection[album]);// store it, if no match found newAlbums will be empty.
+              return newAlbums;
+          }
+        }
       }
+      return collection;//Otherwise return all collection if no search object or empty search object provided.
     }
 
-  return newAlbums;
-}
-
 console.log(search('Nameless', 2000,'tosha'));
+console.log(search('Saadia Abdo', 1988,'natapika'));
 console.log(search());
-console.log(search('ahfdhhh',2015));
+console.log(search('ahfdhhh',2015,'mishimishi'));
 
 
 // Add an array of tracks to your album objects. Each track should have a name and duration.
