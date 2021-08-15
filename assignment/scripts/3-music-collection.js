@@ -15,7 +15,7 @@ function addToCollection(title, artist, yearPublished, tracks){
 }
 //call the function to add objects in the collection: Adds 7 objects.
 console.log(addToCollection('Indha deeraley', 'Saada Ali', 1991,
-                          [{name: 'mzeeya', duration: 2},{name: 'kotokoto', duration: 16}]));
+          [{name: 'mzeeya', duration: 2},{name: 'kotokoto', duration: 16}]));
 
 //Test the `addToCollection` function:
 //Add 6 albums to your collection. Aim to have a mix of both same and different artists and published years.
@@ -24,11 +24,11 @@ console.log(addToCollection('Indha deeraley', 'Saada Ali', 1991,
 //After all are added, console.log the `collection` array.
 
 console.log(addToCollection('Boomba train','Nameless', 2003,
-                            [{name: 'kilakitu', duration: 5},{name: 'jimjim', duration: 6}]));
+          [{name: 'kilakitu', duration: 5},{name: 'jimjim', duration: 6}]));
 console.log(addToCollection('Zilizopendwa','Saadia Abdo', 1988,[{name: 'natapika', duration: 6},
-                            {name: 'mayma', duration:100},{name: 'chekacheka', duration: 18}]));
+         {name: 'mayma', duration:100},{name: 'chekacheka', duration: 18}]));
 console.log(addToCollection('Rabaaso', 'Abdi Diini', 2009, [{name: 'heblow', duration: 10},
-                            {name: 'majimaji', duration: 25},{name: 'kituvitu', duration: 1}]));
+         {name: 'majimaji', duration: 25},{name: 'kituvitu', duration: 1}]));
 console.log(addToCollection('Nipekitu', 'Nameless', 2000, [{name: 'tosha', duration: 5}]));
 console.log(addToCollection('Mikasi','Ferooz', 2004, [{name: 'kotokoto', duration: 16}]));
 console.log(addToCollection('Sema basi', 'Saadia Abdo', 2006, [{name: 'jimjim', duration: 12},
@@ -96,13 +96,14 @@ function search(artist, year, trackName){
           }
         }
       }
-      return collection;//Otherwise return all collection if no search object or empty search object provided.
+      return(artist === undefined && year === undefined &&
+        trackName === undefined) ? collection : [];//Otherwise return all collection if no search object or empty search object provided.
     }
 
-console.log(search('Nameless', 2000,'tosha'));
+console.log(search('Abdi Diini', 2009,'heblow'));
 console.log(search('Saadia Abdo', 1988,'natapika'));
 console.log(search());
-console.log(search('ahfdhhh',2015,'mishimishi'));
+console.log(search('ahfdhhh',2020,'mishimishi'));
 
 
 // Add an array of tracks to your album objects. Each track should have a name and duration.
